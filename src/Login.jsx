@@ -64,7 +64,7 @@ function Login() {
       <h2>Login with OTP</h2>
 
       <p className="subtitle">
-        Enter your login details
+        Enter your login details 
       </p>
 
       {/* Name */}
@@ -131,7 +131,7 @@ function Login() {
             id="verify_otp"
             onClick={verifyOTP}
           >
-            Verify OTP
+            Verify 
           </button>
 
         </div>
