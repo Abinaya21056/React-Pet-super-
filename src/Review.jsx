@@ -9,7 +9,7 @@ function Review({ cart = [], setCart }) {
 
     const [savedAddress, setSavedAddress] = useState(
         JSON.parse(localStorage.getItem("savedAddress")) || null
-    );
+    )
 
     return (
         <div className="review-container">
