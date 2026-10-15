@@ -14,7 +14,7 @@ function Dog() {
                 <div>
                     <Link to="/dogfood"> <img className="dogs" src="/image/p53.png" alt="" width={"250px"} height={"250px"} />
                         </Link>
-                    <p className="para">Food</p>
+                    <p className="para">Food more</p>
                 </div>
            
                 <div>
