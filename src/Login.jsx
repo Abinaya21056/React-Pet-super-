@@ -131,7 +131,7 @@ function Login() {
             id="verify_otp"
             onClick={verifyOTP}
           >
-            Verify 
+            Verify Otp
           </button>
 
         </div>

@@ -1,32 +1,67 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
+import { useNavigate, Link,useLocation } from "react-router-dom";
+import Order from "./Order";
 function Review({ cart = [], setCart }) {
     const navigate = useNavigate();
-
+    const [method, setMethod]=useState("");
+const location =useLocation();
+const steps=[
+     { name: "Cart", path: "/Cart", icon: "fa-cart-shopping" },
+  { name: "Address", path: "/Address", icon: "fa-address-card" },
+  { name: "Review", path: "/Review", icon: "fa-folder-open" },
+  { name: "Payment", path: "/Order", icon: "fa-hand-holding-dollar" }
+];
+const [showPayment, setShowPayment] = useState(false);
+const currentStep = showPayment ? 3 : steps.findIndex(
+  (step) => step.path.toLowerCase() === location.pathname.toLowerCase()
+);
     const userName = localStorage.getItem("userName");
-    const [active,setActive]=useState("");
 
     const [savedAddress, setSavedAddress] = useState(
         JSON.parse(localStorage.getItem("savedAddress")) || null
     )
 
     return (
+       
         <div className="review-container">
-<div id="car-t" >
-           <Link>
-             <p><i class="fa-solid fa-cart-shopping"></i>Cart</p>
-          </Link>             
-                        ________
-                     <Link to={"/Address"}>
-             <p><i class="fa-solid fa-address-card"></i>Address</p>
-           </Link>
-        
-                         ________    
-                        <Link> <p><i class="fa-regular fa-folder-open"></i>Review</p></Link>
-                        ________
-                        <Link><p><i class="fa-solid fa-hand-holding-dollar"></i>Payment</p></Link>
-                     </div>
+      {showPayment && (
+  <Order
+    cart={cart}
+    setShowPayment={setShowPayment}
+  />
+)}
+<div id="car-ts">
+  {steps.map((step, index) => (
+    <React.Fragment key={step.name}>
+      <Link
+        to={step.path}
+        className={`step ${
+          index <currentStep ? "completed" : ""
+        } ${index === currentStep ? "active" : ""}`}
+      >
+        <span className="step-icon">
+          {index <currentStep ? (
+            "✓"
+          ) : (
+            <i className={`fa-solid ${step.icon}`}></i>
+          )}
+        </span>
+
+        <p>{step.name}</p>
+      </Link>
+
+      {index < steps.length - 1 && (
+        <div
+          className={`step-line ${
+            index <currentStep ? "completed-line" : ""
+          }`}
+        ></div>
+      )}
+    </React.Fragment>
+  ))}
+</div>
+
+
             {/* Address */}
             <div className="address-box">
                 <div>
@@ -145,25 +180,9 @@ function Review({ cart = [], setCart }) {
 
                     <button
                         className="checkout-btn"
-                        onClick={() => setActive("payment")}
+                          onClick={() => setShowPayment(true)}
                     >
-                    Proceed to payment
-                    {active==="payment"&&(
-<div>
-    <h1>Select a payment method</h1>
-<p>Helps us ensure a smooth delivery</p>
-{/* credit and debit card */}
-<Link to="/credit"> <div>
-<i class="fa-regular fa-credit-card"></i>
-<h1>Credit / Debit Card</h1>
-<p>Extra discounts available on ICICI Bank Credit Card On Order Above $2500</p>
-</div></Link>
-
-
-</div>
-                    )}
-                              
-                        
+                    Proceed to payment                 
                     </button>
 
                 </div>

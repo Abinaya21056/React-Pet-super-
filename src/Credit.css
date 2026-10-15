@@ -1,0 +1,52 @@
+#credit-all{
+    /* margin-left:20% ; */
+    background-color: rgb(223, 214, 214);
+    width:100%;
+    height:1000px;
+}
+#offers{
+    padding: 40px 50px;
+     margin-left:20%; 
+      background-color:white;
+        width: 70%;  
+  height: 999px;
+}
+
+#emoji{
+    border-radius:25px;
+}
+#off-link{
+    font-weight:bold;
+    font-size:25px;
+    margin-left:6%;
+    position:relative;
+    bottom:35px;
+}
+#credit-cou{
+    margin-left:29%; 
+     position:relative;
+       bottom:40px;
+    /* bottom:113px; */
+    /* background-color: white;
+  width: 190%;
+  padding: 20px 40px; */
+  /* margin-left: 400px; */
+  /* height: 999px; */
+}
+#coupon-title{
+    font-weight:bold;
+    font-size:30px;
+    margin-bottom:5%;
+}
+#heart-icon{
+    color:red;
+    font-size:30px;
+     margin-left:0%;
+}
+#ic{
+    font-size:30px;
+     margin-bottom:1%;
+}
+#cou-dis{
+    font-size:17px;
+}

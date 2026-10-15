@@ -212,3 +212,87 @@ width: 100px;
 padding: 2px 6px;
 border-radius: 10px;
 }
+ #cart-t {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 0;
+  width: 100%;
+  height: 185px;
+  box-sizing: border-box;
+  position: relative;
+  top: 0;
+   font-size: 33px;
+   /* left: 200px; */
+}
+#cart-t .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 65px;
+  color: #777;
+  text-decoration: none;
+}
+
+#cart-t .step-icon {
+ width: 50px;
+  
+  height: 45px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding-right: 15px;
+}
+
+#cart-t .step p {
+  margin: 19px 0 0;
+   font-size: 43px;
+
+}
+
+#cart-t .step.completed .step-icon {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: white;
+}
+
+#cart-t .step.active .step-icon {
+  border-color: #ed7028;
+  color: #ed7028;
+}
+
+#cart-t .step.active p {
+  color: #ed7028;
+  font-weight: bold;
+}
+
+#cart-t .step-line {
+  height: 3px;
+  width: 65px;
+  background: #ddd;
+  margin: 0 5px 24px;
+}
+
+#cart-t .step-line.completed-line {
+  background: #16a34a;
+}
+
+@media (max-width: 480px) {
+  #cart-t .step {
+    min-width: 48px;
+  }
+
+  #cart-t .step-line {
+    width: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  #cart-t .step p {
+    font-size: 10px;
+  }
+}

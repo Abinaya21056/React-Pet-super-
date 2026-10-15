@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Address.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import{Link} from "react-router-dom";
 
 function Address({ cart =[],setCart}) {
@@ -14,6 +14,18 @@ function Address({ cart =[],setCart}) {
     state: "",
     pincode: "",
   });
+  const location =useLocation();
+  const steps=[
+       { name: "Cart", path: "/Cart", icon: "fa-cart-shopping" },
+    { name: "Address", path: "/Address", icon: "fa-address-card" },
+    { name: "Review", path: "/Review", icon: "fa-folder-open" },
+    { name: "Payment", path: "/Order", icon: "fa-hand-holding-dollar" }
+  ];
+  const currentStep = steps.findIndex(
+  (step) => step.path.toLowerCase() === location.pathname.toLowerCase()
+  );
+  console.log("Current Path:", location.pathname);
+console.log("Current Step:", currentStep);
   // order summary
   const totalPrice=cart.reduce(
     (total,item)=>
@@ -147,20 +159,36 @@ function Address({ cart =[],setCart}) {
 
   return (
     <div id="address-s">
-      <div id="car-t" >
-   <Link>
-    <p><i class="fa-solid fa-cart-shopping"></i>Cart</p>
-  </Link>             
-               ________
-             <Link to={"/Address"}>
-    <p><i class="fa-solid fa-address-card"></i>Address</p>
-  </Link>
-
-                 ________    
-                <Link> <p><i class="fa-regular fa-folder-open"></i>Review</p></Link>
-               ________
-               <Link><p><i class="fa-solid fa-hand-holding-dollar"></i>Payment</p></Link>
-            </div> 
+    <div id="cart-t">
+      {steps.map((step, index) => (
+        <React.Fragment key={step.name}>
+          <Link
+            to={step.path}
+            className={`step ${
+              index <currentStep ? "completed" : ""
+            } ${index === currentStep ? "active" : ""}`}
+          >
+            <span className="step-icon">
+              {index <currentStep ? (
+                "✓"
+              ) : (
+                <i className={`fa-solid ${step.icon}`}></i>
+              )}
+            </span>
+    
+            <p>{step.name}</p>
+          </Link>
+    
+          {index < steps.length - 1 && (
+            <div
+              className={`step-line ${
+                index <currentStep ? "completed-line" : ""
+              }`}
+            ></div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
     <div className="address-page">
 
       <h1>Select Address</h1>

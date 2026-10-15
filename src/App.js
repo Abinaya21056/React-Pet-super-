@@ -6,6 +6,8 @@ import Dog from './Dog';
 import './Dog.css';
 import Address from'./Address';
 import './Address.css';
+import Credit from './Credit';
+import './Credit.css';
 import Review from './Review';
 import './Review.css';
 import Dogfood  from'./Dogfood';
@@ -108,7 +110,7 @@ function App(){
      <Route path="/Address"element={<Address cart={cart} setCart={setCart}/>}/>
      <Route path="/Cart"element={<Cartpage  cart={cart}setCart={setCart}/>}/>
       <Route path="/review"element={<Review cart={cart} setCart={setCart}/>}/>
-
+ <Route path="/credit"element={<Credit/>}/>
     </Routes>
   </BrowserRouter>
   );
